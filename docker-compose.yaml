@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  niginx:
+    image: nginx:latest
+    ports:
+    - target: 80
+      published: 80
+      protocol: tcp
+    deploy:
+      replicas: 1
+    volumes:
+    - type: bind  
+      source: ./nginx.conf
+      target: /etc/nginx/nginx.conf
+    depends_on:
+      lbg7-python-api
+  lbg7_api:
+    image: lbg7-python-api:latest
+    build: ./
+    deploy:
+      replicas: 1    
