@@ -6,7 +6,7 @@ pipeline {
                 sh '''
                 docker build -t lbg7-python-api .
                 '''
-                //
+            
             }
         }
         stage('Test') {
@@ -14,15 +14,15 @@ pipeline {
                 sh '''
                 python lbg.test.py
                 '''
-                //
+            
             }
         }
         stage('Deploy') {
             steps {
                 sh '''
                 docker compose up -d
-                ...
-                //
+                '''
+                
             }
         }
     }
