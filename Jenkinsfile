@@ -12,15 +12,16 @@ pipeline {
         stage('Test') {
             steps {
                 sh '''
-                python lbg.test.python
+                python lbg.test.py
                 '''
                 //
             }
         }
         stage('Deploy') {
             steps {
-                Sh '''
+                sh '''
                 docker compose up -d
+                ...
                 //
             }
         }
